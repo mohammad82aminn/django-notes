@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Notes</title>
-</head>
-<body>
-    <h1>Notes</h1>
+{% extends '_base.html' %}
+
+{% block page_title %}Note page{% endblock page_title %}
+
+{% block context %}
 
     {% for note in note_list %}
-        <h2>{{note.author}}</h2>
-        {{note.text}}<br>
-        <p>----------------------</p>
-    {%  empty %}
-        <p> No notes yet. </p>
+        <article class="note-card">
+                <span class="note-id">#2</span>
+                <p class="note-text">{{note.text}}</p>
+                <p class="note-author">{{note.author}}</p>
+        </article>
+    {% empty %}
+        <article class="note-card">
+                <span class="note-id">#3</span>
+                <p class="note-text">Buy milk and bread</p>
+                <p class="note-author">Ali</p>
+        </article>
     {% endfor %}
 
-</body>
-</html>
+
+{% endblock %}
