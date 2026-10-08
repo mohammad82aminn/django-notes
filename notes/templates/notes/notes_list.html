@@ -1,22 +1,25 @@
 {% extends '_base.html' %}
 
-{% block page_title %}Note page{% endblock page_title %}
+{% block page_title %}All notes · Notes{% endblock page_title %}
 
-{% block context %}
+{% block content %}
+    <section class="page-intro">
+        <h1 class="page-title">All notes</h1>
+        <p class="page-subtitle">Everything written so far, straight from the database.</p>
+    </section>
 
-    {% for note in note_list %}
-        <article class="note-card">
-                <span class="note-id">#2</span>
-                <p class="note-text">{{note.text}}</p>
-                <p class="note-author">{{note.author}}</p>
-        </article>
-    {% empty %}
-        <article class="note-card">
-                <span class="note-id">#3</span>
-                <p class="note-text">Buy milk and bread</p>
-                <p class="note-author">Ali</p>
-        </article>
-    {% endfor %}
-
-
-{% endblock %}
+    <section class="notes-grid">
+        {% for note in note_list %}
+            <article class="note-card">
+                <span class="note-id">#{{ note.id }}</span>
+                <p class="note-text">{{ note.text }}</p>
+                <p class="note-author">{{ note.author }}</p>
+            </article>
+        {% empty %}
+            <div class="empty-state">
+                <p class="empty-title">No notes yet.</p>
+                <p class="empty-hint">Add your first note from the admin panel.</p>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock content %}
